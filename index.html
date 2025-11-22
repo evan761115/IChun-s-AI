@@ -141,7 +141,7 @@
                 🚀 超級新聞人群群三代
             </h1>
             <p class="text-gray-600 mt-3 font-medium">
-                專為《三立》與《ETtoday》風格、記者蔡維歆/田暐瑋模式定制的專業內容生成與強化引擎 (V3.2 - 結構加固版)。
+                《ETtoday》風格內容生成器
             </p>
         </header>
 
@@ -206,13 +206,13 @@
                 title: '一、重點轉新聞：輸入事件重點或社群貼文',
                 placeholder: '請貼上您想轉化為新聞稿的事件概要、討論串或貼文...',
                 id: 'newsInput',
-                buttonText: '📰 生成《三立/ET》風格新聞',
+                buttonText: '📰 生成新聞',
                 buttonClass: 'bg-teal-700 hover:bg-teal-800 focus:ring-teal-300',
                 options: true,
                 hasGrounding: true
             },
             rewrite_link: {
-                title: '二、新聞改寫 (30% 引用限制)',
+                title: '二、新聞改寫',
                 placeholder: '請貼上要改寫的「新聞全文」或「新聞連結（URL）」。',
                 id: 'rewriteLinkInput', 
                 buttonText: '🔗 開始改寫並補足 70% 內容',
@@ -221,7 +221,7 @@
                 hasGrounding: true
             },
             rewrite_pr: {
-                title: '三、通稿改寫 (全文照登許可)',
+                title: '三、通稿改寫',
                 placeholder: '請貼上公關提供的新聞稿件內容...',
                 id: 'prInput',
                 buttonText: '📝 順稿整理並生成新聞',
@@ -230,7 +230,7 @@
                 hasGrounding: false
             },
             interview: {
-                title: '四、訪綱生成 (20 題深度追問)',
+                title: '四、訪綱生成',
                 placeholder: '請輸入藝人名單 (例如：周杰倫、蔡依林, 或單一藝人)，選填訪問重點...',
                 id: 'artistInput',
                 buttonText: '🎤 搜尋事件並生成 20 題訪綱',
@@ -435,13 +435,13 @@
 
             switch(mode) {
                 case 'news':
-                    loadingMessage.textContent = '正在以《三立/ETtoday》風格生成新聞與六標題...';
+                    loadingMessage.textContent = '正在生成新聞與標題...';
                     systemInstruction = sharedInstruction;
                     payload = { contents: [{ parts: [{ text: inputContent }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
                     break;
                 
                 case 'rewrite_pr':
-                    loadingMessage.textContent = '正在整理公關稿，重新編排並生成六標題 (允許全文照登)...';
+                    loadingMessage.textContent = '正在整理新聞稿，重新編排並生成標題...';
                     systemInstruction = sharedInstruction.replace('請撰寫一篇完整、專業且符合上述字數限制的新聞稿', `【重要】若公關稿內容極為完整，允許您全文照登，但仍需重新編排段落、將警語集中於文末。請撰寫一篇完整、專業且符合上述字數限制的新聞稿`);
                     payload = { contents: [{ parts: [{ text: inputContent }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
                     break;
